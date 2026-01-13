@@ -7,7 +7,10 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 
 @SpringBootTest
 @ActiveProfiles("test")
-@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
+@EmbeddedKafka(
+    partitions = 1, 
+    bootstrapServersProperty = "spring.kafka.bootstrap-servers" // Samodejno poveže vrata s Springom
+)
 class NotificationServiceApplicationTests {
 
 	@Test
